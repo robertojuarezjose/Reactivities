@@ -484,3 +484,6 @@ $RECYCLE.BIN/
 *.swp
 API/appsettings.json
 API/reactivities.db
+
+# Ignore local development certificates
+certificates/*
