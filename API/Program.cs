@@ -1,5 +1,7 @@
 using Persistence;
 using Microsoft.EntityFrameworkCore;
+using Application.Activities.Queries;
+using Application.Core;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,8 +11,10 @@ builder.Services.AddDbContext<AppDbContext>(options => {
 });
 
 builder.Services.AddCors();
-
+builder.Services.AddMediatR(options => 
+options.RegisterServicesFromAssemblyContaining<GetActivityList.Handler>());
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
 var app = builder.Build();
 
