@@ -49,7 +49,7 @@ export default function ActivityForm() {
 
    } 
 
-   if( isLoadingActivity) return <Typography variant='h4'>Loading...</Typography>
+  if( isLoadingActivity) return <Typography variant='h4'>Loading...</Typography>
 
 
 
