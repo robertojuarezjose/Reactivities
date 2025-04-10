@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import agent from "../api/agent";
 import { useLocation } from "react-router";
+import { Activity } from "../types";
 
 export const useActivities = (id?: string) => {
 
@@ -36,6 +37,8 @@ export const useActivities = (id?: string) => {
           await queryClient.invalidateQueries({
             queryKey: ['activities']
           });
+
+          
 
         }
         
