@@ -8,11 +8,13 @@ using MediatR;
 using Application.Activities.Queries;
 using Application.Activities.Commands;
 using Application.Activities.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers;
 
 public class ActivitiesController: BaseApiController
 {
+    [AllowAnonymous]
    [HttpGet]
    public async Task<ActionResult<List<Activity>>> GetActivities()
    {
