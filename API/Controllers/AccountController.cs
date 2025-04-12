@@ -38,7 +38,7 @@ public class AccountController(SignInManager<User> signInManager): BaseApiContro
     }
 
     [AllowAnonymous]
-    [HttpGet("user_info")]
+    [HttpGet("user-info")]
     public async Task<ActionResult> GetUserInfo()
     {
         if(User.Identity?.IsAuthenticated== false) return NoContent();
