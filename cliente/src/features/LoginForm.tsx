@@ -17,11 +17,12 @@ export default function LoginForm() {
         resolver: zodResolver(loginSchema),
     });
 
-    const onSubmit = async (data: LoginSchema) => {
+    const onSubmit =  (data: LoginSchema) => {
         console.log(data);
-        await loginUser.mutateAsync(data, {
-            onSuccess: () => {
+        loginUser.mutateAsync(data, {
+            onSuccess: async () => {
                 console.log('Login successful');
+                
                 navigate(location.state?.from || '/activities');
             },
             onError: (error) => {
