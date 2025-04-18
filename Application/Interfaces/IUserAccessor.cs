@@ -9,4 +9,6 @@ public interface IUserAccessor
 
     Task<User>  GetUserAsync();
 
+    Task<User> GetUserWithPhotosAsync();
+
 }
