@@ -22,7 +22,7 @@ export default function ActivityCard({activity}: Props) {
         
         <Box display='flex' alignItems='center' justifyContent='space-between'>
             <CardHeader 
-                avatar={<Avatar sx={{height: 80, width:80}}/>}
+                avatar={<Avatar src={activity.hostImageUrl} sx={{height: 80, width:80}} alt="Image of host"/>}
                 title={activity.title}
                 titleTypographyProps={{
                     fontWeight: 'bold',
@@ -52,7 +52,7 @@ export default function ActivityCard({activity}: Props) {
                 <Box display='flex' flexGrow={0} alignItems='center'>
                     <AccessTime sx={{mr:1}}/>
                     <Typography variant='body2' noWrap>
-                        {formatDate(activity.date)}
+                        {activity.date ? formatDate(activity.date) : ''}
                     </Typography>
 
                 </Box>
@@ -63,7 +63,7 @@ export default function ActivityCard({activity}: Props) {
             <Divider/>
             <Box display='flex' gap={2} sx={{backgroundColor: 'grey.200', py:3, pl:3}}>
                 {
-                    activity.attendees.map(attendee => (
+                    (activity.attendees ?? []).map(attendee => (
                         <AvatarPopover profile={attendee} key={attendee.id}/>
 
                     ))

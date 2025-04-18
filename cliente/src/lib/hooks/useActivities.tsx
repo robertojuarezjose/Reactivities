@@ -20,11 +20,15 @@ export const useActivities = (id?: string) => {
         enabled: !id && location.pathname === '/activities' && !!currentUser,
         select: data => {
           return data.map(activity => {
+
+            const host  = activity.attendees?.find(x => x.id === activity.hostId); 
+
             return {
               ...activity,
               isHost: currentUser?.id === activity.hostId,
               isGoing: Array.isArray(activity.attendees) 
                 && activity.attendees.some(a => a.id === currentUser?.id),
+              hostImageUrl: host?.imageUrl
             }
           })
           
@@ -40,11 +44,14 @@ export const useActivities = (id?: string) => {
         },
         enabled: !!id && !!currentUser, 
         select: data => {
+
+          const host  = data.attendees?.find(x => x.id === data.hostId); 
           return {
             ...data,
             isHost: currentUser?.id === data.hostId,
             isGoing: Array.isArray(data.attendees) 
                 && data.attendees.some(a => a.id === currentUser?.id),
+            hostImageUrl: host?.imageUrl
           }
         }
       });
@@ -69,6 +76,7 @@ export const useActivities = (id?: string) => {
       
               const isHost = oldActivity.hostId === currentUser.id;
               const isAttending = oldActivity.attendees?.some(a => a.id === currentUser.id);
+              
       
               return {
                 ...oldActivity,
