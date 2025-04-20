@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Application.Interfaces;
 using Infrastructure.Security;
 using Infrastructure.Fotos;
+using API.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,7 @@ builder.Services.AddDbContext<AppDbContext>(options => {
 });
 
 builder.Services.AddCors();
+builder.Services.AddSignalR();
 builder.Services.AddMediatR(options =>{
 
     options.RegisterServicesFromAssemblyContaining<GetActivityList.Handler>();
@@ -69,6 +71,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.MapGroup("api").MapIdentityApi<User>();
+app.MapHub<CommentHub>("/comments");
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;

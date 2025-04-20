@@ -40,6 +40,17 @@ type User = {
 
 }
 
+type ChatComment = {
+
+    id: string;
+    createdAt: Date;
+    body: string;
+    userId: string;
+    displayName: string;
+    imageUrl?: string; 
+    
+}
+
 type LocationIQSuggestion = {
     place_id: string
     osm_id: string
