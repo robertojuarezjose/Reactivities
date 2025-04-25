@@ -9,7 +9,6 @@ type Props = {
 
 export default function ProfileCard({profile}: Props) {
 
-    const following = false; 
 
 
   return (
@@ -17,7 +16,7 @@ export default function ProfileCard({profile}: Props) {
         <Card 
             sx={{
                 boderRadios: 3, p:3,  
-                maxWidth: 300, 
+                maxWidth: 200, 
                 textDecoration: 'none'
             }}
             elevation={4}
@@ -49,7 +48,7 @@ export default function ProfileCard({profile}: Props) {
                             )
                         }
                         {
-                            following && <Chip size='small' label='Following' color='secondary' variant="outlined"/>
+                            profile.following && <Chip size='small' label='Following' color='secondary' variant="outlined"/>
                         }
 
                     </Box>
@@ -58,7 +57,7 @@ export default function ProfileCard({profile}: Props) {
             <Divider sx={{mb:2}} />
             <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'start'}}>
                 <Person/>
-                <Typography sx={{ml: 1}} >20 followers</Typography>
+                <Typography sx={{ml: 1}} >{profile.followersCount} followers</Typography>
             </Box>    
 
         </Card>

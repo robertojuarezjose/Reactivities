@@ -11,10 +11,10 @@ public class DbInitializer
 
         var users = new List<User>
         {
-            new User{DisplayName = "Bob", UserName = "bob@test.com", Email="bob@test.com" },
-            new User{DisplayName = "Chucky", UserName = "chucky@test.com", Email="chucky@test.com" },
-            new User{DisplayName = "Pedro", UserName = "pedro@test.com", Email="pedro@test.com" },
-            new User{DisplayName = "John", UserName = "john@test.com", Email="john@test.com" },
+            new User{ Id= "bob-id", DisplayName = "Bob", UserName = "bob@test.com", Email="bob@test.com" },
+            new User{ Id= "chucky-id", DisplayName = "Chucky", UserName = "chucky@test.com", Email="chucky@test.com" },
+            new User{ Id= "pedro-id", DisplayName = "Pedro", UserName = "pedro@test.com", Email="pedro@test.com" },
+            new User{ Id= "tom-id", DisplayName = "tom", UserName = "tom@test.com", Email="john@test.com" },
    
         };   
 
